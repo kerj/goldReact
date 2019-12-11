@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import useGlobal from './store'
+import * as Styled from './styles/App.styles';
+import { Splash } from './components/Splash'
+import { Rules } from './components/Rules'
+import { Game } from './components/Game'
 
 function App() {
+  const [globalState, globalActions] = useGlobal();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Styled.App>
+      {
+        globalState.name.length > 0 ? null : <Splash />
+      }
+      {
+        globalState.rules || !globalState.name ? null : <Rules /> 
+      }
+      {
+        globalState.rules && globalState.name ? <Styled.Game><Game actions={globalActions} /> </Styled.Game> : null
+      }
+    </Styled.App>
   );
 }
 
