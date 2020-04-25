@@ -2,10 +2,12 @@ import React from 'react'
 import useGlobal from '../store'
 import * as Styled from '../styles/Rules.styles'
 
-export const Rules = () => {
+export const Rules = (overides) => {
     const [globalState, globalActions] = useGlobal();
+
     return (
-        <Styled.Rules>
+        <Styled.Rules overides={overides.overides}>
+          <Styled.containerRules>
             <Styled.H1>It's a Gold Rush!</Styled.H1>
             <Styled.P>Hello Prospector {globalState.name}! You have decided to leave your home in the midwest to resurrect the 1849 Gold Rush, 170 years later. Your friends think you have lost it! You are determined to prove them wrong. You head out to California to seek your fortune. You must find the plots of gold amongst the Silicon Valley tech buildings. You must be careful to avoid blowing up buildings with your prospecting TNT. The Bureau of Land Management must be placated as well. Your plan to unearth unimagined riches is as follows:</Styled.P>
             <Styled.Ul>
@@ -16,6 +18,7 @@ export const Rules = () => {
                 <li>Collect gold!!</li>
             </Styled.Ul>
             <Styled.Button onClick={() => globalActions.viewedRules()} type="button">Gold or Bust</Styled.Button>
+          </Styled.containerRules>
         </Styled.Rules>
     )
 }

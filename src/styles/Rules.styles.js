@@ -1,18 +1,25 @@
 import styled from 'styled-components'
 import Background from "../img/gold-bars.jpg"
 
+export const containerRules = styled.div`
+  background-color: black;
+`
+
 export const Rules = styled.div`
+  position: absolute;
+  z-index: 10000;
   background: url(${Background}) no-repeat center center fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  width: 100%;
-  height: 100vh;
+  height: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  margin-top: -${props => props.overides}px; 
+  padding: 0rem 5rem;
 `
 export const Button = styled.button`
     font: serif;
@@ -34,17 +41,14 @@ export const Button = styled.button`
 `
 
 export const Ul = styled.ul`
-  background-color: rgb(215,133,0, 0.8);
   color: #FCFFB2;
 	text-align: left;
 `
 export const H1 = styled.h1`
-  background-color: rgb(215,133,0, 0.8);
   color: #FCFFB2;
 	text-align: left;
 `
 export const P = styled.p`
-  background-color: rgb(215,133,0, 0.8);
   color: #FCFFB2;
 	text-align: left;
 `
